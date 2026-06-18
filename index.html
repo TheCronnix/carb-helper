@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0E5C4F">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Carb Helper">
+  <meta name="application-name" content="Carb Helper">
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAESUlEQVR4nO3cQW7UQBBG4Q5iHY4GB4DTcQGuxgnCAkayiCcee7rtrve/b8kC7Oo3pVYU5uX1+9e3JkF8uvoBpJ4MWigGLRSDFopBC8WghWLQQjFooRi0UAxaKAYtFIMWikELxaCFYtBCMWihGLRQDFooBi0UgxaKQQvFoIVi0EIxaKEYtFAMWigGLRSDFopBC8WghWLQQjFooRi0UAxaKAYtFIM+ye+fv65+hAgGfYJbzEY9nkEPZsTnMuiTGfhYBj3QvXiNehyDHmQrWqMew6AHMNbrGPSFDL8/g+5sb6RG3ZdBd3Q0TqPux6A7Mco5GPQk/ED0YdAd9IrRqJ9n0E/qHaFRP8egn2B88zHoCflBOc6gDxodnVEfY9AHnBWbUe9n0DsZ2dwMenJ+gPYx6B2uisuoH2fQD7o6qqv//SoM+gHGVIdBF+IHa5tBb5gtotmeZzYG/QHjqceg75g55pmf7WoGvaJCMBWe8QoGXZhRv2fQ/zGS2gx6oWLMFZ95JIP+p3IYlZ+9N4OGMOq/DLoZA0l80KSYSe9yVHTQxACI77RHdNBUyVHHBp186GSRQSfEnPCOa+KCTjropHe9iQo68YDT3jkm6LSDXUp695iglSEi6KQNdU/KDPBBpxzkIxJmgQ464QD3os8EGzT94J5Bng02aGVCBk3eQL1QZ4QLmnpQIxBnhQta2VBBEzfOaLSZfb76Aa705ce31T+nHXKSl9fvX9+ufogeHo3wXsTP/r3V7Z3LrFBXji1HDo1y0CkQG3pri/aKkr6tCR9e/IbueUiEA6crHzR9a56JMMvyQX9kxEZ1S88NG/TI8Ix6Xtiglal00IQ732yqz7R00PeccSXw2jEnZNDKZdBCKRt09bvezCrPtmzQ0hqDFopBCwUZ9Bl3wMr3TDJk0Mpl0ELBBj3ySuB1Y17YoFsbE54xzw0dtPLgg+65Ud3O84v4Xo5biEd/Q86Q68Bv6KUjYRpzLREbemkZqN+cxFP6ezkMb4zK/3kh6sohPoMWikELpXTQle96s6o+09JBS/8zaKEYtFDKB139zjcTwizLBy0tIYImbJarUWaICFq6wQRN2TBXIM0OE7TUGixo0qY5C21mqKAlXNC0jTMScVa4oFtjHlRv1Bkhg1YubNDUDdQDeTbYoFtjH9xR9Jmgg26Nf4B7JMwCH3RrGQe5JWUGEUErR0zQKRtqTdK7l/6imaNSvqAmKeSbmA29lHDQCe+4JjLo1tgHTn63LbFBt8Y8eOI77RF5h15T/V6dHvJN9IZeqhxE5WfvzQ29osq2NuT3DPoDs4ZtyPcZ9ANmCduQtxn0DleFbciPM+gnjArcgI8z6I6OBm7A/Ri0UPw5tFAMWigGLRSDFopBC8WghWLQQjFooRi0UAxaKAYtFIMWikELxaCFYtBCMWihGLRQDFooBi0UgxaKQQvFoIVi0EIxaKEYtFAMWigGLZQ/8E1AIeFyO1oAAAAASUVORK5CYII=">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAESUlEQVR4nO3cQW7UQBBG4Q5iHY4GB4DTcQGuxgnCAkayiCcee7rtrve/b8kC7Oo3pVYU5uX1+9e3JkF8uvoBpJ4MWigGLRSDFopBC8WghWLQQjFooRi0UAxaKAYtFIMWikELxaCFYtBCMWihGLRQDFooBi0UgxaKQQvFoIVi0EIxaKEYtFAMWigGLRSDFopBC8WghWLQQjFooRi0UAxaKAYtFIM+ye+fv65+hAgGfYJbzEY9nkEPZsTnMuiTGfhYBj3QvXiNehyDHmQrWqMew6AHMNbrGPSFDL8/g+5sb6RG3ZdBd3Q0TqPux6A7Mco5GPQk/ED0YdAd9IrRqJ9n0E/qHaFRP8egn2B88zHoCflBOc6gDxodnVEfY9AHnBWbUe9n0DsZ2dwMenJ+gPYx6B2uisuoH2fQD7o6qqv//SoM+gHGVIdBF+IHa5tBb5gtotmeZzYG/QHjqceg75g55pmf7WoGvaJCMBWe8QoGXZhRv2fQ/zGS2gx6oWLMFZ95JIP+p3IYlZ+9N4OGMOq/DLoZA0l80KSYSe9yVHTQxACI77RHdNBUyVHHBp186GSRQSfEnPCOa+KCTjropHe9iQo68YDT3jkm6LSDXUp695iglSEi6KQNdU/KDPBBpxzkIxJmgQ464QD3os8EGzT94J5Bng02aGVCBk3eQL1QZ4QLmnpQIxBnhQta2VBBEzfOaLSZfb76Aa705ce31T+nHXKSl9fvX9+ufogeHo3wXsTP/r3V7Z3LrFBXji1HDo1y0CkQG3pri/aKkr6tCR9e/IbueUiEA6crHzR9a56JMMvyQX9kxEZ1S88NG/TI8Ix6Xtiglal00IQ732yqz7R00PeccSXw2jEnZNDKZdBCKRt09bvezCrPtmzQ0hqDFopBCwUZ9Bl3wMr3TDJk0Mpl0ELBBj3ySuB1Y17YoFsbE54xzw0dtPLgg+65Ud3O84v4Xo5biEd/Q86Q68Bv6KUjYRpzLREbemkZqN+cxFP6ezkMb4zK/3kh6sohPoMWikELpXTQle96s6o+09JBS/8zaKEYtFDKB139zjcTwizLBy0tIYImbJarUWaICFq6wQRN2TBXIM0OE7TUGixo0qY5C21mqKAlXNC0jTMScVa4oFtjHlRv1Bkhg1YubNDUDdQDeTbYoFtjH9xR9Jmgg26Nf4B7JMwCH3RrGQe5JWUGEUErR0zQKRtqTdK7l/6imaNSvqAmKeSbmA29lHDQCe+4JjLo1tgHTn63LbFBt8Y8eOI77RF5h15T/V6dHvJN9IZeqhxE5WfvzQ29osq2NuT3DPoDs4ZtyPcZ9ANmCduQtxn0DleFbciPM+gnjArcgI8z6I6OBm7A/Ri0UPw5tFAMWigGLRSDFopBC8WghWLQQjFooRi0UAxaKAYtFIMWikELxaCFYtBCMWihGLRQDFooBi0UgxaKQQvFoIVi0EIxaKEYtFAMWigGLZQ/8E1AIeFyO1oAAAAASUVORK5CYII=">
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Carb%20%26%20Dose%20Helper%22%2C%22short_name%22%3A%22Carb%20Helper%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%23F4F6F3%22%2C%22theme_color%22%3A%22%230E5C4F%22%2C%22start_url%22%3A%22./%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAOf0lEQVR4nO3bQXLcNhCGUTmVtXO05ADO6XKBXC0ncBayy5ItjcgZAmj0/946lSJnAPRHavzp85c/vz4BAFF%2BW30BAMB8AgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAIL998%2B/qy8BWEQAQKjvw18EQCYBAACBBAAE%2Bvmp31sAyCMAIMx7w14EQBYBAEE%2BGvIiAHIIAAAIJAAgxNGne28BIIMAgABnh7oIgP4EADR37zAXAdCbAACAQAIAGnv0Kd5bAOhLAEBTVw1vEQA9CQBo6OqhLQKgHwEAAIEEADQz6mndWwDoRQBAI6OHtAiAPgQANGE4A2cIAOAUoQE9CABoYPZQFgGwPwEAm1s1jEUA7E0AwMYMYeBeAgC4mwCBfQkA2FSV4VvlOoBzBABsqNrQrXY9wMcEAGzGsAWuIACASwgT2IsAgI1UH7LVrw/4QQDAJnYZrrtcJ6QTAAAQSADABnZ7qt7teiGRAIDidh2mu143pBAAUJghCowiAIBhBAzUJQCgqC7Ds8t9QDcCAArqNjS73Q90IACgGMMSmEEAAFMIG6hFAEAh3Ydk9/uDnQgAKCJlOKbcJ1QnAKAAQxGYTQAA0wkeWE8AwGKpwzD1vqEKAQALpQ/B9PuHlQQALGL4ASsJAGApIQRrCABYwNB7zecB8wkAmMywe5vPBeYSADCRIQdUIQCAMgQSzCMAYBLD7RifE8whAGACQw2oRgDAYIb/eT4zGE8AACWJABhLAMBAhthjfH4wjgCAQQwvoDIBAAMY/tfxWcIYAgAoTwTA9QQAXMywGsPnCtcSAHAhQwrYhQAAtiGw4DoCAC5iOM3hc4ZrCAC4gKE0l88bHicA4EGGEbAjAQBsSXjBYwQAPMAQWsvnD/cTAHAnwwfYmQCAOxj%2Bdfgu4D4CANieCIDzBACcZNjU5HuBcwQAnGDIAF0IADjI8K/PdwTHCQCgFREAxwgAOMBQ2YvvCz4mAOADhgnQkQCAGwz/ffnu4DYBALQlAuB9AgDeYXj04HuEtwkAeIOhAXQnAOAnhn8/vlP4lQAAIogAeE0AwAuGBJBCAMA3hn9/vmP4QQDAk8GQxHcNzwQAEEcEgAAAwwCIJACIZvjn8t2TTgAAsUQAyQQAsRz%2BPD1ZB%2BQSAERy6APpBABxDH9%2BZk2QSAAAPIkA8ggAojjkucX6IIkAIIbDHeAHAUAEw5%2BjrBVSCACAn4gAEggA2nOYA/xKANCa4c%2B9rB26EwC05QDnUdYQnQkAgBtEAF0JAFpyaAPcJgBox/DnatYUHQkAWnFQM4q1RTcCAOAgEUAnAoA2HM4AxwkAWjD8mcVaowsBwPYcyMxmzdGBAAC4gwhgdwKArTmEAe4jANiW4c9q1iA7EwBsycFLFdYiuxIAAA8SAexIALAdhy3A4wQAWzH8qcraZDcCgG04YKnOGmUnAgAAAgkAtuDJil1Yq%2BxCAFCeA5XdWLPsQAAADCACqE4AUJpDFGAMAUBZhj%2B7s4apTABQkoOTLqxlqhIAlOPApBtrmooEAKU4KOnK2qYaAUAZDki6s8apRABQgoORFNY6VQgAAAgkAFjOExFprHkqEAAs5SAklbXPagKAZRyApLMHWEkAsISDD57ZC6wiAAAgkABgOk888Jo9wQoCgKkcdPA2e4PZBADTOODgNnuEmQQAAAQSAEzhyQaOsVeYRQAwnAMNzrFnmEEAAEAgAcBQnmTgPvYOowkAAAgkABjGEww8xh5iJAHAEA4uuIa9xCgCAAACCQAu54kFrmVPMYIAAIBAAoBLeVKBMewtriYAuIwDCsayx7iSAACAQAKAS3gygTnsNa7y%2B%2BoLgFH%2B%2BPuvw/%2BtQxVI8%2Bnzlz%2B/rr4I9lZheJ4Z9kdVuC94z4g1TxZvANjW6APw5f9fDADdeAPAQ1YMxpVPPkKASrwF4BHeALCNCofd92sQAsDuBADlVRj8PxMCwO78M0DuNmP4VRz%2BL1W/PnoToDxCAFDWLsN1l%2BsEeMmPALnLyCePnQeqJzJW2HnPsI43AJSy%2B0G2%2B/UDOQQAp416yu0yPLvcB/vw5ol7CABK6DY0u90P0I8AYLmuw7LrfQE9CABOufpVY/ch2f3%2BqMOfAThLAABAIAHAMilPxyn3CexFAHDYla8Y04Zi2v2yhj8DcIYAYLrUYZh630BNAgAAAgkADrnq1WL6U3D6/TOePwNwlAAAgEACgGk8/T7zOQAVCAA%2B5JUi7MWe5QgBwBSeel/zeQCrCQAACCQAACCQAOCmK/6W6HX323wujOR3AHxEAABAIAEAAIEEAAAEEgAAEEgA8C4/ABzP58NIfgjILQIAAAIJAAAIJAAAIJAAAIBAAoA3%2BfEQ9GAv8x4BAACBBAAABBIAABBIAABAIAEAAIEEAEP5BfJtPh9gFQEAAIEEAL/wVAq92NO8RQAAQCABAACBBADDef34Np8LsJIAAIBAAgAAAgkApvC6%2BzWfB7CaAACAQAKAaTz1PvM5ABUIAAAIJACYKv3pN/3%2BgToEAAAEEgBMl/oUnHrfQE0CgCXShmHa/QL1CQCWSRmKKfcJ7EUAAEAgAcBS3Z%2BOu98fsC8BwHJdh2TX%2BwJ6EACU0G1YdrsfoB8BQBldhmaX%2BwB6EwCUsvvw3P36gRy/r74A%2BNn3IfrH338tvY4zDH5gN94AUNYuQ3WX6wR4SQDwi0pP3tWHa/Xrg6enWnuaOvwJgPIq/knA4Ad2JwDYRoUQMPiBLgQA21kRAgY/0I0AYFsvh/KIGDD0gc4EAC28NazPRIFhD6QRALRlqAO8zz8DBIBAAoA3Vfond8D97GXeIwAAIJAAAIBAAgAAAgkAAAgkAHiXHw/B3uxhbhEAABBIAABAIAEAAIEEAAAEEgDc5EdEsCd7l48IAAAIJAAAIJAAAIBAAoAP%2BVsi7MWe5QgBAACBBAAABBIAHOKVIuzBXuUoAQAAgQQAAAQSABzm1SLUZo9yhgAAgEACAAACCQBO8YoRarI3OUsAAEAgAQAAgQQAp3nVCLXYk9xDAABAIAHAXTxxQA32IvcSAAAQSABwN08esJY9yCMEAAAEEgAAEEgA8BCvIGENe49HCQAACCQAeJgnEZjLnuMKAgAAAgkALuGJBOaw17iKAACAQAKAy3gygbHsMa4kALiUAwrGsLe4mgAAgEACgMt5UoFr2VOMIAAAIJAAYAhPLHANe4lRBADDOLjgMfYQIwkAAAgkABjKEwzcx95hNAEAAIEEAMN5koFz7BlmEABM4UCDY%2BwVZhEAABBIADCNJxu4zR5hJgHAVA44eJu9wWwCgOkcdPCaPcEKAgAAAgkAlvDEA8/sBVYRACzj4COdPcBKAoClHICksvZZTQCwnIOQNNY8FQgAAAgkACjBExEprHWqEACU4WCkO2ucSgQApTgg6craphoBQDkOSrqxpqlIAFCSA5MurGWqEgCU5eBkd9YwlQkASnOAsitrl%2BoEAOU5SNmNNcsOBABbcKCyC2uVXQgAtuFgpTprlJ0IALbigKUqa5PdCAC246ClGmuSHQkAtuTApQprkV0JALbl4GU1a5Cdffr85c%2Bvqy8CHvXfP/%2BuvgSCGPx04A0ALTiQmcVaowsBQBsOZkazxuhEANCKA5pRrC268RsA2vK7AK5g8NOVNwC05eDmUdYQnQkAWnOAcy9rh%2B78CYAY/iTAEQY/KbwBIIaDnY9YIyTxBoBI3gbwksFPIm8AiOTA5ztrgVTeABDP24BMBj/pBAB8IwQyGPzwzJ8A4BuDoT/fMfzgDQC8wduAXgx%2B%2BJUAgBuEwN4MfnifAIADhMBeDH74mACAE4RAbQY/HCcA4A5CoBaDH84TAPAgMbCGoQ%2BPEQBwESEwh8EP1xAAMIAYuJahD9cTADCYGLiPoQ9jCQCYSAzcZujDPAIAFhEDzwx9WEMAQBEpQWDgQw0CAIrqEgQGPtQkAGAzVcPAoIe9CABoZlQgGPDQiwAAgEC/rb4AAGA%2BAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABDof8FudpKwGDniAAAAAElFTkSuQmCC%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image/png%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+<title>Meal Carb &amp; Dose Helper · SA</title>
+<style>
+  :root{
+    --paper:#F4F6F3; --card:#FFFFFF; --ink:#16242B; --muted:#69787E;
+    --line:#E4E9E5; --teal:#0E5C4F; --teal-soft:#E5F0EC;
+    --amber:#C76A23; --amber-soft:#FBEFE3; --slow:#7A5AA6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.4; padding:0 0 150px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:0 16px}
+
+  header{background:var(--teal);color:#fff;border-radius:0 0 22px 22px;
+    box-shadow:0 6px 20px rgba(14,92,79,.18)}
+  .head-inner{max-width:560px;margin:0 auto;padding:16px 16px 18px}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.72;font-weight:600}
+  h1{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-top:3px}
+  .sub{font-size:12.5px;opacity:.82;margin-top:4px;line-height:1.45}
+
+  .section{margin-top:22px}
+  .section-title{font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;margin:0 4px 8px;display:flex;justify-content:space-between}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
+  .row:first-child{border-top:none}
+  .name{flex:1;min-width:0}
+  .name b{font-size:14.5px;font-weight:600;display:block;line-height:1.25}
+  .name span{font-size:11.5px;color:var(--muted);display:block;margin-top:1px}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;
+    padding:1px 6px;border-radius:6px;margin-top:3px;text-transform:uppercase}
+  .tag.slow{background:#F1ECF8;color:var(--slow)}
+  .tag.protein{background:var(--teal-soft);color:var(--teal)}
+  .carb{font-size:13px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;
+    min-width:42px;text-align:right;opacity:.65}
+
+  .stepper{display:flex;align-items:center;gap:7px;flex-shrink:0}
+  .sbtn{width:32px;height:32px;border:1px solid var(--line);border-radius:9px;background:#fff;
+    color:var(--teal);font-size:19px;font-weight:600;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:transform .08s}
+  .sbtn:active{transform:scale(.9)}
+  .sbtn.minus{color:var(--muted)}
+  .qty{min-width:18px;text-align:center;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+  .row.active{background:#FAFCFB}
+  .row.active .carb{opacity:1;color:var(--teal)}
+
+  .note{margin-top:18px;background:var(--teal-soft);border-radius:14px;padding:13px 15px;
+    font-size:12px;color:#244;line-height:1.5}
+  .note b{color:var(--teal)}
+  .note.warn{background:var(--amber-soft);color:#5a3414}
+  .note.warn b{color:var(--amber)}
+
+  /* Sticky tally */
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:20;
+    background:#fff;border-top:1px solid var(--line);
+    box-shadow:0 -6px 22px rgba(0,0,0,.08);padding:12px 16px 16px}
+  .tally-inner{max-width:560px;margin:0 auto}
+  .tally-top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+  .tally-carbs .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .tally-carbs .val{font-size:32px;font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums;line-height:1}
+  .tally-carbs .val small{font-size:15px;font-weight:700}
+  .dose{text-align:right}
+  .dose .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .dose .val{font-size:24px;font-weight:800;color:var(--amber);font-variant-numeric:tabular-nums;line-height:1.1}
+  .dose .val.empty{font-size:13px;font-weight:600;color:var(--muted)}
+  .ratio-line{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .ratio-line label{font-size:12px;color:var(--muted)}
+  .ratio-line input{width:58px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;
+    font-size:15px;text-align:center;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .ratio-line input:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+  .clear{margin-left:auto;background:none;border:none;color:var(--teal);font-size:12px;
+    text-decoration:underline;cursor:pointer;padding:6px 2px}
+  .micro{font-size:10.5px;color:var(--muted);margin-top:8px;line-height:1.4}
+
+  /* CFRD guide */
+  .guide{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .guide>summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:700;
+    font-size:14.5px;color:var(--teal);display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .guide>summary::-webkit-details-marker{display:none}
+  .guide>summary .chev{font-weight:400;font-size:18px;transition:transform .2s;color:var(--muted)}
+  .guide[open]>summary .chev{transform:rotate(90deg)}
+  .guide-body{padding:2px 16px 16px;font-size:13px;line-height:1.55}
+  .guide-body h3{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;margin:16px 0 5px}
+  .guide-body p{margin-bottom:9px}
+  .guide-body b{color:var(--teal)}
+  .gloss{margin-top:2px;border-top:1px solid var(--line)}
+  .gloss div{padding:8px 0;border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.45}
+  .gloss div:last-child{border-bottom:none}
+  .gloss b{color:var(--ink)}
+  .guide-foot{margin-top:14px;background:var(--teal-soft);border-radius:12px;
+    padding:11px 13px;font-size:12px;color:#244;line-height:1.5}
+  .guide-foot b{color:var(--teal)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-inner">
+    <div class="eyebrow">Carb counting · South Africa</div>
+    <h1>Meal Carb &amp; Dose Helper</h1>
+    <div class="sub">Tap items to build the plate. It totals the carbs. Enter your set carb ratio to see a matching unit estimate.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <details class="guide">
+    <summary>How this works with CFRD <span class="chev">&rsaquo;</span></summary>
+    <div class="guide-body">
+
+      <h3>The big idea</h3>
+      <p>In CF, thick mucus slowly damages the pancreas, so it can't make enough <b>insulin</b>. Insulin is the key that lets the body's cells take in the energy from food. When there isn't enough, sugar from food stays in the blood instead of feeding the body. So the job is simple to say: put insulin in from outside to do the work the pancreas can't.</p>
+
+      <h3>Why she can still eat the treats</h3>
+      <p>This is the part that trips most people up, because it's the opposite of the usual "diabetes means cut the sugar" message. CF needs <b>lots of calories</b> to grow well and keep the lungs strong, so food is rarely the thing to restrict. The rule isn't "ban the carbs" — it's "cover the carbs with insulin." That's exactly why this tool counts carbs instead of cutting foods out.</p>
+
+      <h3>What "carb counting" actually means</h3>
+      <p>Carbohydrates (the sugars and starches in food) are the part that raises blood sugar. Protein and fat barely move it in the short term. So you add up the <b>grams of carb</b> in the meal — and that's the number this tool gives you at the bottom.</p>
+
+      <h3>Turning carbs into a dose</h3>
+      <p>Her team gives you a <b>ratio</b> — something like "1 unit of insulin per 10g of carb." The sum is just: meal carbs ÷ ratio = the mealtime dose. That's the ratio box in the tool. The tool does that division for you, but the ratio itself only ever comes from her team.</p>
+
+      <h3>The words the doctors use</h3>
+      <div class="gloss">
+        <div><b>Bolus</b> — the fast insulin you give to cover a meal or snack.</div>
+        <div><b>Basal</b> — slow background insulin (some kids need it, some don't yet). It is not for food.</div>
+        <div><b>Carb ratio (ICR)</b> — how many grams of carb one unit covers. The number in the tool.</div>
+        <div><b>Correction factor (ISF)</b> — extra insulin to bring a high reading down, separate from food. The tool does not do this.</div>
+        <div><b>Hypo</b> — blood sugar dropping too low. Treated with fast sugar, then re-check.</div>
+      </div>
+
+      <h3>Why some foods are flagged "acts slower"</h3>
+      <p>Chips, pizza, creamy pasta and ice cream are high in fat, so they raise blood sugar more slowly and for longer than the carb number alone suggests. If you see a low soon after and a high a few hours later with these meals, that's the fat at work — and a good thing to raise with the team, who may split or stretch the dose.</p>
+
+      <h3>Timing</h3>
+      <p>Fast insulin is usually given just before eating and works over a few hours. A reading won't move the moment you dose — rapid insulin takes a couple of hours to do most of its work.</p>
+
+      <h3>Lows — hypoglycaemia ("hypo")</h3>
+      <p>This is blood sugar dropping too <b>low</b>, usually under <b>4 mmol/L</b>. It happens when there's more insulin on board than the food or activity needed. Signs in a child: shaky, sweaty, pale, suddenly hungry, irritable or teary, dizzy, or just "not right." It can come on fast and needs treating even if she feels okay.</p>
+      <p>The usual fix is the <b>15 / 15 rule</b>: give about 15g of fast sugar, wait 15 minutes, then re-check — and repeat if she's still low. This is where the sweets and syrup lists double as a treatment tool, since you'll know the fast carbs to hand. Follow with a small snack so it doesn't dip again. A severe low (can't swallow, fitting, unconscious) is an emergency — that's what prescribed glucagon and an emergency call are for.</p>
+
+      <h3>Highs — hyperglycaemia ("hyper")</h3>
+      <p>This is blood sugar running too <b>high</b>, when there isn't enough insulin for the glucose in her blood. <b>Symptoms usually start once she's above roughly 10–11 mmol/L</b>: very thirsty, weeing a lot, tired, headache, sometimes blurry vision. Common causes are not enough insulin, more carbs than were covered, a missed dose, stress, or — very often in CF — illness or infection, which makes insulin work less well.</p>
+      <p>When a high is sustained, the body can start breaking down fat instead, which makes <b>ketones</b>. That's the thing to watch: check ketones when she's high or unwell, push water, and use the <b>correction</b> dose her team set (separate from meal carbs — this tool does not do it). Re-check after a couple of hours rather than re-dosing straight away.</p>
+
+      <div class="guide-foot" style="background:#FBEFE3;color:#5a3414">
+        <b>Phone the team or get urgent care if:</b> blood ketones are 1.5 mmol/L or higher, she's vomiting or has tummy pain, is drowsy or confused, is breathing fast or deep, or has fruity-smelling breath. These are the warning signs of ketoacidosis (DKA) and need care right away — don't wait it out.
+      </div>
+
+      <div class="guide-foot">
+        <b>The one rule to hold onto:</b> this tool helps with the carb maths only. The ratio, any correction, and every change come from your CF and diabetes team. When something they say doesn't land, jot it down and ask again — and if you have a CGM, the patterns it shows make the "why" click far faster than any explanation.
+      </div>
+
+    </div>
+  </details>
+</div>
+
+<div class="wrap" id="app"></div>
+
+<!-- Version stamp: lets both parents confirm at a glance whether the phone has refreshed
+     to the latest published build (no service worker, so reopening online fetches this file). -->
+<div class="wrap"><div class="micro" style="text-align:center;padding:4px 0 0">Updated 18 Jun 2026</div></div>
+
+<div class="tally">
+  <div class="tally-inner">
+    <div class="tally-top">
+      <div class="tally-carbs">
+        <div class="lbl">Meal carbs</div>
+        <div class="val"><span id="total">0</span><small>g</small></div>
+      </div>
+      <div class="dose">
+        <div class="lbl">Est. units (your ratio)</div>
+        <div class="val empty" id="dose">enter ratio</div>
+      </div>
+    </div>
+    <div class="ratio-line">
+      <label for="ratio">1 unit covers</label>
+      <input id="ratio" type="number" inputmode="decimal" min="1" step="0.5" placeholder="g">
+      <label>g carb</label>
+      <button class="clear" id="clear">Clear plate</button>
+    </div>
+    <div class="micro">Estimate = carbs ÷ your ratio, rounded to ½ unit. Carb-counting aid only — it does not include correction doses, active insulin, illness or exercise. Use the ratio and rules your diabetes team set, and confirm doses with them.</div>
+  </div>
+</div>
+
+<script>
+  // carb = grams carbohydrate per stated portion. tag: 'slow' (high fat/protein, acts slower),
+  // 'protein' (negligible carb). Homemade values are averages — weigh / use the pack label when you can.
+  const DATA = [
+    { group:"Breakfast", items:[
+      { id:"cocopops",name:"Coco Pops",                portion:"1 cup (30g), dry", carb:26 },
+      { id:"milk",    name:"Milk",                     portion:"125ml (for cereal)", carb:6 },
+      { id:"frtoastsugar",name:"French toast with cinnamon sugar",portion:"1 slice", carb:22 },
+      { id:"frtoast", name:"French toast (plain / sweetener)",portion:"1 slice, no syrup", carb:16 },
+      { id:"waffle",  name:"Waffle (normal, plain)",   portion:"1 waffle, no topping", carb:28 },
+      { id:"pancake", name:"Pancake (plain)",          portion:"1 pancake, no topping", carb:14 },
+    ]},
+    { group:"Mains", items:[
+      { id:"pannekoek",name:"Pannekoek with cinnamon sugar",portion:"1 rolled", carb:22 },
+      { id:"pannekoeksw",name:"Pannekoek (made with sweetener)",portion:"1 rolled", carb:13 },
+      { id:"breast",  name:"Plain chicken breast",     portion:"1 breast", carb:0, tag:"protein" },
+      { id:"plainstrip",name:"Plain chicken strips",   portion:"1 portion", carb:0, tag:"protein" },
+      { id:"schnitzel",name:"Crumbed chicken schnitzel",portion:"1 piece", carb:18, tag:"slow" },
+      { id:"crumbstrip",name:"Crumbed chicken strip",  portion:"per strip", carb:4, tag:"slow" },
+      { id:"pizza",   name:"Homemade pizza",           portion:"1 slice", carb:30, tag:"slow" },
+      { id:"pastabowl",name:"Chicken pasta with cream",portion:"bowl (~150g pasta)", carb:50, tag:"slow" },
+      { id:"pastakid",name:"Chicken pasta with cream", portion:"child (~100g pasta)", carb:35, tag:"slow" },
+      { id:"mincebowl",name:"Mince spaghetti (bolognaise)",portion:"bowl (~150g pasta)", carb:50 },
+      { id:"mincekid",name:"Mince spaghetti (bolognaise)",portion:"child (~100g pasta)", carb:30 },
+    ]},
+    { group:"Sides", items:[
+      { id:"pampoen", name:"Pampoenkoekies (cinnamon sugar)",portion:"1 fritter", carb:18 },
+      { id:"pampoensw",name:"Pampoenkoekies (made with sweetener)",portion:"1 fritter", carb:10 },
+      { id:"chips",   name:"Fried chips (slap chips)",  portion:"small (100g)", carb:40, tag:"slow" },
+      { id:"chipskid",name:"Fried chips (slap chips)",  portion:"kiddie (60g)", carb:24, tag:"slow" },
+    ]},
+    { group:"Syrups & toppings", items:[
+      { id:"maple",   name:"Maple syrup (real)",       portion:"1 tbsp", carb:13 },
+      { id:"fakesyrup",name:"Pancake / imitation syrup",portion:"1 tbsp (spikes faster)", carb:14 },
+      { id:"goldensyrup",name:"Golden syrup (normal)",  portion:"1 tbsp", carb:17 },
+      { id:"sfsyrup", name:"Sugar-free syrup",         portion:"1 tbsp", carb:1 },
+    ]},
+    { group:"Snacks \u2014 low carb (won't spike)", items:[
+      { id:"biltong", name:"Biltong (e.g. Kalahari)",  portion:"30g", carb:1, tag:"protein" },
+      { id:"droewors",name:"Dro\u00ebwors",            portion:"30g stick", carb:1, tag:"protein" },
+      { id:"cheese",  name:"Cheese (cheddar)",         portion:"30g / 2 cubes", carb:1, tag:"protein" },
+      { id:"vienna",  name:"Simply Chicken vienna (no cheese)",portion:"per vienna", carb:2, tag:"protein" },
+      { id:"ham",     name:"Double smoked ham (Farmers Fresh)",portion:"2\u20133 slices", carb:1, tag:"protein" },
+      { id:"nuts",    name:"Mixed nuts / peanuts",     portion:"small handful (28g)", carb:5 },
+      { id:"pbutter", name:"Peanut butter",            portion:"1 tbsp", carb:3 },
+      { id:"questbar",name:"Protein bar (low-carb, Quest-type)",portion:"1 bar (net carb)", carb:4 },
+    ]},
+    { group:"Sugar-free / diabetic treats", items:[
+      { id:"amajoya", name:"Amajoya hard sweet (isomalt)",portion:"per 4 \u2014 barely raises sugar", carb:1 },
+      { id:"miam",    name:"Miam protein nougat bite (sugar-free)",portion:"per bite \u2014 glycaemic carb", carb:1 },
+      { id:"caringcandy",name:"Caring Candies sugar-free sweet",portion:"per 4 \u2014 low GI", carb:1 },
+      { id:"nasugarchoc",name:"No-added-sugar chocolate (erythritol)",portion:"4 squares \u2014 check label", carb:4 },
+      { id:"sfmarsh", name:"Sugar-free marshmallow",   portion:"each", carb:1 },
+      { id:"sfjam",   name:"Sugar-free jam (Thistlewood)",portion:"1 tsp", carb:1 },
+      { id:"sfjelly", name:"Sugar-free jelly (e.g. Moir's)",portion:"1 bowl", carb:1 },
+      { id:"sfmint",  name:"Sugar-free mints / gum",   portion:"each", carb:0 },
+      { id:"sfchoc",  name:"Sugar-free chocolate (maltitol)",portion:"4 squares \u2014 check label", carb:8 },
+    ]},
+    { group:"Snacks \u2014 carb", items:[
+      { id:"safari",  name:"Safari Funky Fruit stick", portion:"1 stick (25g)", carb:15 },
+      { id:"pretzel", name:"Woolworths pretzels",      portion:"small handful (25g)", carb:18 },
+      { id:"cube",    name:"Dried fruit cube (padkos)",portion:"1 cube", carb:5 },
+      { id:"minimarsh",name:"Mini marshmallows",       portion:"per 10", carb:6 },
+      { id:"provita", name:"Provita cracker",          portion:"per cracker", carb:4 },
+      { id:"popcorn", name:"Popcorn (plain)",          portion:"small bowl", carb:18 },
+      { id:"simba",   name:"Simba / potato crisps",    portion:"36g packet", carb:18, tag:"slow" },
+      { id:"rusk",    name:"Rusk (Ouma)",              portion:"1 rusk", carb:20 },
+      { id:"protbar", name:"Protein bar (standard, low-sugar)",portion:"1 bar \u2014 check label!", carb:22, tag:"slow" },
+      { id:"yoghurt", name:"Darling strawberry yoghurt (full fat)", portion:"100g tub", carb:13 },
+    ]},
+    { group:"Fruit", items:[
+      { id:"apple",   name:"Apple",                    portion:"1 medium", carb:20 },
+      { id:"raisins", name:"Raisins (Safari)",         portion:"small box (30g)", carb:23 },
+      { id:"naartjie",name:"Naartjie",                 portion:"1 medium", carb:10 },
+    ]},
+    { group:"Drinks", items:[
+      { id:"zerosoda",name:"Zero-sugar soft drink (Sprite / Fanta / Coke Zero)",portion:"no sugar \u2014 no spike", carb:0 },
+      { id:"brookes", name:"Brookes Lo-Cal squash (diluted)",portion:"1 glass \u2014 barely any", carb:1 },
+      { id:"steri",   name:"Steri Stumpie chocolate",  portion:"350ml bottle", carb:35 },
+      { id:"sterilite",name:"Steri Stumpie Lite",      portion:"350ml (no added sugar)", carb:17 },
+      { id:"hotchoc", name:"Hot chocolate (with milk)",portion:"1 mug", carb:25 },
+      { id:"hotchocw",name:"Hot chocolate (with water)",portion:"1 mug", carb:14 },
+      { id:"baroneshake",name:"Bar One milkshake",     portion:"1 glass (estimate)", carb:65 },
+    ]},
+    { group:"Desserts & sweets", items:[
+      { id:"icecream",name:"Ice cream",                portion:"1 scoop (\u00BD cup)", carb:16 },
+      { id:"cone",    name:"Waffle cone (empty)",      portion:"1 cone", carb:20 },
+      { id:"donut",   name:"Donut (glazed / iced)",    portion:"1 donut", carb:30, tag:"slow" },
+      { id:"baronedonut",name:"Bar One donut",         portion:"1 donut (estimate)", carb:48, tag:"slow" },
+      { id:"moussecake",name:"Chocolate mousse cake",  portion:"1 slice (estimate)", carb:35, tag:"slow" },
+      { id:"winegum", name:"Wine gum",                  portion:"per gum", carb:2 },
+      { id:"minifizzer",name:"Mini Fizzer",            portion:"each", carb:6 },
+      { id:"smartie", name:"Smarties",                  portion:"per 8", carb:6 },
+      { id:"jellytot",name:"Jelly Tots",               portion:"per ~10", carb:3 },
+      { id:"jellysnake",name:"Jelly snake",            portion:"per snake", carb:6 },
+      { id:"jellybean",name:"Jelly beans",             portion:"per 10", carb:27 },
+      { id:"jellybaby",name:"Jelly baby",              portion:"each", carb:4 },
+      { id:"marsh",   name:"Marshmallow",               portion:"each", carb:6 },
+    ]},
+  ];
+
+  const plate = {}; // id -> count
+  let ratio = null;
+
+  function tagLabel(t){
+    if(t==="slow") return '<span class="tag slow">acts slower</span>';
+    if(t==="protein") return '<span class="tag protein">no carb</span>';
+    return '';
+  }
+
+  function render(){
+    const app = document.getElementById("app");
+    app.innerHTML = "";
+    DATA.forEach(sec=>{
+      const wrap=document.createElement("div"); wrap.className="section";
+      const h=document.createElement("div"); h.className="section-title";
+      h.innerHTML="<span>"+sec.group+"</span>"; wrap.appendChild(h);
+      const card=document.createElement("div"); card.className="card";
+      sec.items.forEach(it=>{
+        const count=plate[it.id]||0;
+        const row=document.createElement("div");
+        row.className="row"+(count>0?" active":"");
+        row.innerHTML=
+          '<div class="name"><b>'+it.name+'</b><span>'+it.portion+'</span>'+tagLabel(it.tag)+'</div>'+
+          '<div class="carb">'+it.carb+'g</div>'+
+          '<div class="stepper">'+
+            '<button class="sbtn minus" data-id="'+it.id+'" data-d="-1" aria-label="Remove one '+it.name+'">&minus;</button>'+
+            '<span class="qty">'+count+'</span>'+
+            '<button class="sbtn" data-id="'+it.id+'" data-d="1" aria-label="Add one '+it.name+'">+</button>'+
+          '</div>';
+        card.appendChild(row);
+      });
+      wrap.appendChild(card); app.appendChild(wrap);
+    });
+
+    const n=document.createElement("div"); n.className="note slow-note";
+    n.innerHTML='<b>The "acts slower" tag.</b> Fried chips, pizza, crumbed chicken and creamy pasta are high in fat, '+
+      'so they raise glucose more slowly and for longer than the carb number alone suggests. If you see lows soon after '+
+      'and highs hours later with these meals, that split-timing is worth raising with your team (some families split or extend the dose).';
+    app.appendChild(n);
+
+    const w=document.createElement("div"); w.className="note warn";
+    w.innerHTML='<b>Homemade figures are averages.</b> Pasta, pizza, french toast and chips swing a lot with portion size and recipe. '+
+      'When you can, weigh the carb part or use the pack label — that is always more accurate than an estimate.';
+    app.appendChild(w);
+
+    update();
+    document.querySelectorAll(".sbtn").forEach(b=>{
+      b.addEventListener("click",()=>{
+        const id=b.dataset.id, d=parseInt(b.dataset.d,10);
+        plate[id]=Math.max(0,(plate[id]||0)+d);
+        if(plate[id]===0) delete plate[id];
+        render();
+      });
+    });
+  }
+
+  function update(){
+    let total=0;
+    DATA.forEach(sec=>sec.items.forEach(it=>{ total+=(plate[it.id]||0)*it.carb; }));
+    document.getElementById("total").textContent=total;
+    const doseEl=document.getElementById("dose");
+    if(ratio && ratio>0 && total>0){
+      const units=Math.round((total/ratio)*2)/2;
+      doseEl.className="val";
+      doseEl.textContent="\u2248 "+units+(units===1?" unit":" units");
+    } else if(ratio && ratio>0){
+      doseEl.className="val"; doseEl.textContent="0 units";
+    } else {
+      doseEl.className="val empty"; doseEl.textContent="enter ratio";
+    }
+  }
+
+  document.getElementById("ratio").addEventListener("input",e=>{
+    const v=parseFloat(e.target.value);
+    ratio=(isNaN(v)||v<=0)?null:v; update();
+  });
+  document.getElementById("clear").addEventListener("click",()=>{
+    for(const k in plate) delete plate[k]; render();
+  });
+
+  render();
+</script>
+</body>
+</html>
